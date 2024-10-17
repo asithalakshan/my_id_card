@@ -6,8 +6,16 @@ void main() {
   ));
 }
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
   const Home({super.key});
+
+  @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+
+  int level = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -18,6 +26,14 @@ class Home extends StatelessWidget {
         centerTitle: true,
         backgroundColor: Colors.grey[800],
         elevation: 0.0,
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => {
+          setState(() => level += 1
+          )
+        },
+        backgroundColor: Colors.grey[800],
+        child: Icon(Icons.add, color: Colors.grey[400]),
       ),
       body: Padding(
         padding: const EdgeInsets.fromLTRB(30, 40, 30, 0),
@@ -62,6 +78,24 @@ class Home extends StatelessWidget {
             const SizedBox(height: 10),
             Text(
               'Software Developer',
+              style: TextStyle(
+                color: Colors.amberAccent[200],
+                letterSpacing: 2.5,
+                fontSize: 28,
+                fontWeight: FontWeight.bold
+              ),
+            ),
+            const SizedBox(height: 10),
+            const Text(
+              'Score',
+              style: TextStyle(
+                color: Colors.grey,
+                letterSpacing: 2.5,
+              ),
+            ),
+            const SizedBox(height: 10),
+            Text(
+              '$level',
               style: TextStyle(
                 color: Colors.amberAccent[200],
                 letterSpacing: 2.5,
